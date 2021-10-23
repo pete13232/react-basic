@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Transaction from "./components/Transaction";
+import "./App.css";
+import FormComponent from "./components/FormComponent";
+import React, { useState } from "react";
 
 function App() {
+  const design = { color: "red", textAlign: "center", fontSize: "1.5rem" };
+  const initData = [
+    { title: "ค่ารักษาพยาบาล", amount: 2000 },
+    { title: "ค่าน้ำมัน", amount: 5000 },
+    { title: "ค่าเช่าบ้าน", amount: 8000 },
+  ];
+
+  const [items, setItems] = useState(initData);
+
+  const onAddNewItem = (newItem) => {
+    setItems((prevItem) => { //setState คือการเปลี่ยนแปลงข้อมูลใน state ฉะนั้นแล้วถ้าใช้ callback fn พารามิเตอร์ที่ใส่เข้ามา (prevItem) คือการวนลูปรับค่าตัวแปรของ state (items)
+      return [newItem, ...prevItem];
+    });
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1 style={design}>แอพบัญชีรายรับ - รายจ่าย</h1>
+      <FormComponent onAddItem={onAddNewItem} />
+      <Transaction items={items} />
     </div>
   );
 }
