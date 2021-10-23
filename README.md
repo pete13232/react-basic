@@ -1,4 +1,4 @@
-#Hi Hi ~~
+Hi Hi ~~
 I'm start learning basic React.js from this tutorial.
 
 # Getting Started with Create React App
