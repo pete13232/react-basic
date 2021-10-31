@@ -3,3 +3,11 @@
     text-align: center;
     list-style-type: none;
 }
+
+.expense{
+    border-right: 5px solid red;
+}
+
+.income{
+    border-right: 5px solid green;
+}
